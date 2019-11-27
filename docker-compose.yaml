@@ -1,0 +1,17 @@
+version: "3"
+
+networks: 
+  external: 
+    driver: bridge
+
+services:
+  # REACTJS instance
+  frontend:
+    container_name: "react-alert-app"
+    build: "./app/"
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    networks: 
+      - external
