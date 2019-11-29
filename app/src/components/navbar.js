@@ -1,30 +1,31 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
+import { PostsReducer } from '../contexts/posts'
 
 const Navbar = () => {
     return (
-        <nav class="navbar navbar-expand-lg navbar-dark indigo">
+        <nav className={"navbar navbar-expand-lg navbar-dark indigo"}>
 
-            <Link to="/post" class="navbar-brand text-white">Posts</Link>
+            <Link to="/post" className={"navbar-brand text-white"}>Posts</Link>
 
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hamburgerNav"
+            <button className={"navbar-toggler"} type="button" data-toggle="collapse" data-target="#hamburgerNav"
                 aria-controls="hamburgerNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span className={"navbar-toggler-icon"}></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="hamburgerNav">
+            <div className={"collapse navbar-collapse"} id="hamburgerNav">
 
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <Link to="/user" class="nav-link">Users</Link>
+                <ul className={"navbar-nav mr-auto"}>
+                    <li className={"nav-item"}>
+                        <Link to="/user" className={"nav-link"}>Users</Link>
                     </li>   
                 </ul>
 
-                {/* <form class="form-inline">
-                    <div class="md-form my-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                {/* <form className={"form-inline"}>
+                    <div className={"md-form my-0"}>
+                        <input className={"form-control mr-sm-2"} type="text" placeholder="Search" aria-label="Search" />
                     </div>
                 </form>*/}
 

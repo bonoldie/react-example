@@ -13,7 +13,7 @@ const PostDetail = ({ match: {params:{postId}} }) => {
                 post ? 
                 <div>
                     <h5 className={"card-title"}>{post.title}</h5>
-                    <p class="card-text">{post.body}</p>
+                    <p className={"card-text"}>{post.body}</p>
                 </div>
                 :
                 <div></div>

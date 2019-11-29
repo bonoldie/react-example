@@ -4,11 +4,10 @@ import { PostsContext } from "../contexts/posts";
 const UserDetail = ({ match: {params:{userId}} }) => {
     const { postsState, dispatch } = useContext(PostsContext);
 
-    const user = postsState.users.filter(user => user.id == userId)[0];
+    const user = postsState.users.filter(user => user.id === userId)[0];
    
-    const posts = postsState.posts.filter(post => post.userId == userId);
-    
-    console.log(postsState.posts)
+    const posts = postsState.posts.filter(post => post.userId === userId);
+
     return (
         <div className={"card col-12 mt-1"} >
              <div className={"card-body"}>

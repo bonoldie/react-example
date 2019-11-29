@@ -8,7 +8,7 @@ const Loading = () => {
                 <div>
                     <div className={"overlay"}></div>
                     <div className={"spinner-border text-primary"}>
-                        <span class="sr-only">Loading...</span>
+                        <span className={"sr-only"}>Loading...</span>
                     </div>
                 </div>
 

@@ -16,7 +16,6 @@ export const FETCH_POSTS_USERS_ERROR = "FETCH_POSTS_USERS_ERROR"
 
 // REDUCER
 export const postsReducer = (state, action) => {
-    console.log(state);
     switch (action.type) {
         case FETCH_POSTS:
             return { ...state, loading: true };
@@ -43,6 +42,3 @@ export const PostsProvider = ({ children }) => {
         </PostsContext.Provider>
     );
 };
-
-
-
