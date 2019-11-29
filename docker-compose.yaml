@@ -7,7 +7,7 @@ networks:
 services:
   # REACTJS instance
   frontend:
-    container_name: "react-alert-app"
+    container_name: "react-example-app"
     build: "./app/"
     volumes:
       - ./app:/app

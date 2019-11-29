@@ -1,0 +1,27 @@
+import React,{useContext} from "react"
+import { PostsContext } from "../contexts/posts";
+
+const PostDetail = ({ match: {params:{postId}} }) => {
+    const { postsState } = useContext(PostsContext);
+
+    const post = postsState.posts.filter(post => post.id == postId)[0];
+    
+    return (
+        <div className={"card col-12 mt-1"} >
+             <div className={"card-body"}>
+            {
+                post ? 
+                <div>
+                    <h5 className={"card-title"}>{post.title}</h5>
+                    <p class="card-text">{post.body}</p>
+                </div>
+                :
+                <div></div>
+            }
+            </div>
+        </div>
+    
+    )
+}
+
+export default PostDetail

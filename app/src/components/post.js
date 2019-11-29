@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-
+import {Link} from 'react-router-dom'
 import {PostsContext } from '../contexts/posts';
 
 
@@ -14,9 +14,8 @@ const Post = ({ postId }) => {
         <div className={" mt-5 col-sm-12 col-md-6 col-lg-4"}>
             <div className={"card"}>
                 <div className={"card-body"}>
-                    <h5 className={"card-title"}>{post.title}</h5>
-                    <h6 className={"card-subtitle mb-2 text-muted"}>{postUser.name}</h6>
-                    <p className={"card-text"}>{post.body}</p>
+                <Link to={"/post/"+post.id}><h5 className={"card-title"}>{post.title}</h5></Link>
+                    <Link to={"/user/"+post.userId}><h6 className={"card-subtitle mb-2 text-muted"}>{postUser.name}</h6></Link>
                 </div>
             </div>
         </div>
