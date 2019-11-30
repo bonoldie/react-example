@@ -1,4 +1,5 @@
-import { useContext,useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+
 import Axios from "axios";
 import { FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR, FETCH_POSTS_USERS_SUCCESS, FETCH_POSTS_USERS_ERROR, FETCH_POSTS, PostsContext } from "../contexts/posts";
 
@@ -20,6 +21,8 @@ const usePostsState = () => {
                         dispatch({ type: FETCH_POSTS_ERROR, payload: err.data });
                     }
                 )
+        }
+        if (!postsState.users.length) {
             Axios.get("https://jsonplaceholder.typicode.com/users")
                 .then(
                     (res) => {
@@ -31,6 +34,7 @@ const usePostsState = () => {
                         dispatch({ type: FETCH_POSTS_USERS_ERROR, payload: err.data });
                     }
                 )
+
         }
 
         return () => {

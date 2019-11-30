@@ -1,21 +1,24 @@
-import React, { useContext, useEffect } from 'react'
+import React, { Suspense } from 'react'
 import Post from '../components/post';
-
-import {Route} from 'react-router-dom'
-
+import { Route } from 'react-router-dom'
 import Loading from '../components/loading';
-import PostDetail from '../components/postDetail';
 import usePostsState from '../services/posts.service';
 
-const PostContainer = () => {
+//import PostDetail from '../components/postDetail';
+const PostDetail = React.lazy(() => import('../components/postDetail'))
 
+
+const PostContainer = () => {
+    window.scrollTo(0, 0)
     const postsState = usePostsState()
 
     return (
         <div>
-            <div className={"row"}>
-                <Route path={'/post/:postId'} component={PostDetail} />
-            </div>
+            <Suspense fallback={<Loading />}>
+                <div className={"row"}>
+                    <Route path={'/post/:postId'} component={PostDetail} />
+                </div>
+            </Suspense>
             {
                 postsState.posts.length &&
                     postsState.users.length ?
@@ -24,7 +27,6 @@ const PostContainer = () => {
                             postsState.posts.map(
                                 post =>
                                     <Post key={post.id} postId={post.id} />)
-                                
                         }
                     </div>
 

@@ -1,20 +1,26 @@
-import React, { useContext, useEffect } from 'react'
+import React, { Suspense } from 'react'
 
 import {Route} from "react-router-dom"
 import Loading from '../components/loading';
 import User from '../components/user';
-import UserDetail from '../components/userDetail';
 import usePostsState from '../services/posts.service';
 
+// import UserDetail from '../components/userDetail';
+const UserDetail = React.lazy(()=> import('../components/userDetail'))
+
 const UserContainer = () => {
+    window.scrollTo(0, 0)
+
     const postsState = usePostsState()
 
     return (
         <div>
-            {
-                <div className={"row"}>
-                    <Route path={'/user/:userId'} component={UserDetail} />
-                </div>
+            {   
+                <Suspense fallback={<Loading />}>
+                    <div className={"row"}>
+                        <Route path={'/user/:userId'} component={UserDetail} />
+                    </div>
+                </Suspense>
             
             }
             {

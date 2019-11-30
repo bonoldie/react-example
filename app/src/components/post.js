@@ -1,10 +1,10 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import {PostsContext } from '../contexts/posts';
+import usePostsState from '../services/posts.service';
 
 
 const Post = ({ postId }) => {
-    const { postsState } = useContext(PostsContext);
+    const postsState = usePostsState()
 
     const post = postsState.posts.find(post => post.id === postId);
 

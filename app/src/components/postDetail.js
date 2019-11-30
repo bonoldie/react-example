@@ -1,10 +1,11 @@
 import React,{useContext} from "react"
 import { PostsContext } from "../contexts/posts";
+import usePostsState from "../services/posts.service";
 
 const PostDetail = ({ match: {params:{postId}} }) => {
-    const { postsState } = useContext(PostsContext);
+    const postsState = usePostsState()
 
-    const post = postsState.posts.filter(post => post.id == postId)[0];
+    const post = postsState.posts.filter(post => post.id == postId)[0]
     
     return (
         <div className={"card col-12 mt-1"} >
