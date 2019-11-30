@@ -7,8 +7,8 @@ import { PostsContext } from '../contexts/posts';
 const User = ({userId}) => {
     const { postsState, dispatch } = useContext(PostsContext);
 
-    const user = postsState.users.filter(user => user.id == userId)[0];
-    
+    const user = postsState.users.filter(user => user.id === userId)[0];
+
     return (
         <div className={"card col-sm-12 col-md-6 col-lg-4 m-2"} >
                 <div className={"card-body"}>

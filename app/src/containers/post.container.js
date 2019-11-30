@@ -3,24 +3,13 @@ import Post from '../components/post';
 
 import {Route} from 'react-router-dom'
 
-import Axios from "axios"
-import { FETCH_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR, FETCH_POSTS_USERS_SUCCESS, FETCH_POSTS_USERS_ERROR, PostsContext } from '../contexts/posts';
 import Loading from '../components/loading';
 import PostDetail from '../components/postDetail';
-import { fetchPosts } from '../services/posts.service';
+import usePostsState from '../services/posts.service';
 
 const PostContainer = () => {
-    const { postsState, dispatch } = useContext(PostsContext);
 
-    useEffect(() => {
-        if (!postsState.posts.length) {
-            fetchPosts(dispatch)
-        }
-
-        return () => {
-
-        };
-    }, [])
+    const postsState = usePostsState()
 
     return (
         <div>
@@ -34,7 +23,7 @@ const PostContainer = () => {
                         {
                             postsState.posts.map(
                                 post =>
-                                    <Post postId={post.id} />)
+                                    <Post key={post.id} postId={post.id} />)
                                 
                         }
                     </div>

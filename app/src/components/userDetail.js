@@ -1,15 +1,16 @@
 import React,{useContext} from "react"
+import {Link} from 'react-router-dom'
 import { PostsContext } from "../contexts/posts";
 
 const UserDetail = ({ match: {params:{userId}} }) => {
     const { postsState, dispatch } = useContext(PostsContext);
 
-    const user = postsState.users.filter(user => user.id === userId)[0];
+    const user = postsState.users.filter(user => user.id == userId)[0];
    
-    const posts = postsState.posts.filter(post => post.userId === userId);
+    const posts = postsState.posts.filter(post => post.userId == userId);
 
     return (
-        <div className={"card col-12 mt-1"} >
+        <div className={"card col-12 mt-1"}>
              <div className={"card-body"}>
             {
                 user ? 
@@ -24,8 +25,8 @@ const UserDetail = ({ match: {params:{userId}} }) => {
                 posts.length > 0 ?
                 <div>
                     <h5>Posts</h5>
-                    <ul class="list-group list-group-flush">
-                        {posts.map(post => <li class="list-group-item">{post.title}</li> )} 
+                    <ul className={"list-group list-group-flush"}>
+                        {posts.map(post => <Link to={'/post/'+post.id} ><li key={post.id} className={"list-group-item"}>{post.title}</li></Link> )} 
                     </ul>
                 </div>
                 :
