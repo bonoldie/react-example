@@ -7,7 +7,6 @@ import PostContainer from './containers/post.container';
 import { PostsProvider } from './contexts/posts';
 import Navbar from './components/navbar';
 import UserContainer from './containers/user.container';
-import ListContainer from './containers/list.container';
 
 const App = () => {
 
@@ -25,10 +24,6 @@ const App = () => {
 						
 						<Route path="/user">
 							<UserContainer />
-						</Route>
-
-						<Route path="/list">
-							<ListContainer />
 						</Route>	
 						
 					</Switch>

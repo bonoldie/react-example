@@ -20,11 +20,7 @@ const Navbar = () => {
                 <ul className={"navbar-nav mr-auto"}>
                     <li className={"nav-item"}>
                         <Link to="/user" className={"nav-link"}>Users</Link>
-                    </li>
-
-                    <li className={"nav-item"}>
-                        <Link to="/list" className={"nav-link"}>List</Link>
-                    </li>      
+                    </li>   
                 </ul>
 
                 {/* <form className={"form-inline"}>

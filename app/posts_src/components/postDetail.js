@@ -1,7 +1,10 @@
 import React,{useContext} from "react"
+import { PostsContext } from "../contexts/posts";
 import usePostsState from "../services/posts.service";
 
 const PostDetail = ({ match: {params:{postId}} }) => {
+    window.scroll({top: 0, left: 0, behavior: 'smooth' })
+    
     const postsState = usePostsState()
 
     const post = postsState.posts.filter(post => post.id == postId)[0]
