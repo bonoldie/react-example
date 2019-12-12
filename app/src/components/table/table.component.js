@@ -33,7 +33,7 @@ const Table = ({ tableKeys, tableContent = [], _rowFormatter = TableRow }) => {
             scrollableContent.removeChild(scrollableContent.firstChild)
         }
 
-        // Insert the first row via server side rendering 
+        // Insert the first row via server side rendering
         var firstRow = ReactDOMServer.renderToString(<_rowFormatter rawRowContent={tableContent[firstElementIndex]} />)
 
         scrollableContent.insertAdjacentHTML('beforeend', firstRow)
@@ -75,14 +75,14 @@ const Table = ({ tableKeys, tableContent = [], _rowFormatter = TableRow }) => {
         scrollableContainer = document.getElementById('t-table-scrollable-body')
 
         scrollableContainer.addEventListener('scroll',(e) => {
-           
+
             console.log(scrollableContainer.scrollTop)
         })
 
         //scrollableContainer.addEventListener('touchmove', function (e) {
         //    e.preventDefault()
-        //    
-        //    var currentY = e.changedTouches[0].pageY;   
+        //
+        //    var currentY = e.changedTouches[0].pageY;
         //
         //    if (currentY > lastY) {
         //        firstElementIndex--
@@ -116,7 +116,7 @@ const handleScrollTable = (e) => {
         if (scrollCounter < 0)
             scrollCounter = 0
         scrollCounter++
-    }   
+    }
 
     isScrolled = false
     // Scroll every 2 units
@@ -158,7 +158,7 @@ return (
                 </tr>
             </thead>
         </table>
-        <div /*onScroll={handleScrollTable}*/  id={'t-table-scrollable-body'}>
+        <div onScroll={handleScrollTable}  id={'t-table-scrollable-body'}>
             <table className={"table table-hover table-fixed"} >
                 <tbody id={'t-table-content'}>
                 </tbody>

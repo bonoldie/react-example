@@ -25,7 +25,7 @@ const ListContainer = () => {
         )
     }
 
-    
+
     const generateRows = (index, count = 10) => {
         var rows = []
 
@@ -89,7 +89,7 @@ const ListContainer = () => {
 
         if (isScrolled) {
             scrollCounter = 0
-            
+
 
             var firstElement = document.getElementsByClassName('table-scrollable-content')[0]
 
@@ -99,9 +99,9 @@ const ListContainer = () => {
                 scrollableTableBody.removeChild(scrollableTableBody.firstChild)
             }
             scrollableTableBody.appendChild(firstElement)
-            
+
             displayedPosts = []
-            
+
             // Then populate the table
             var postsContentIndex = postsIndex + 1;
             scrollableElements = document.getElementsByClassName('table-scrollable-content')
@@ -119,7 +119,7 @@ const ListContainer = () => {
             while (scrollableElements[scrollableElements.length - 1].getBoundingClientRect().top + scrollableElements[scrollableElements.length - 1].getBoundingClientRect().height < scrollableContainer.getBoundingClientRect().top + scrollableContainer.getBoundingClientRect().height)
 
             document.getElementById('table-body').insertAdjacentHTML('beforeend',ReactDOMServer.renderToString(bottomBound(scrollableContainer, scrollableElements[scrollableElements.length - 1])));
-            
+
             if(displayedPosts.includes(postsState.posts.length)){
 
             }
@@ -152,14 +152,14 @@ const ListContainer = () => {
                         </tbody>
                     </table>
                 </div>*/}
-                        
+
                         {
-                            (postsState.posts.length > 0) ? 
+                            (postsState.posts.length > 0) ?
                             <Table tableKeys={['ID','TITLE','BODY','USERID']} tableContent={postsState.posts} />
                             :
                             <div></div>
                         }
-                
+
             </div>
 
         </div >
