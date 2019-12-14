@@ -9,6 +9,8 @@ import Navbar from './components/navbar';
 import UserContainer from './containers/user.container';
 import ListContainer from './containers/list.container';
 import VirtualList from './containers/virtualList.container'
+import VTable from './components/vTable/vTable.component';
+import usePostsState from './services/posts.service';
 
 const App = () => {
 
@@ -33,6 +35,16 @@ const App = () => {
 						</Route>
 						<Route path="/vlist">
 							<VirtualList />
+							
+							<VTable 
+								header={['ID','TITLE']}
+								rowIndexes={['id','title']}
+
+								bodyHeight={'50vh'}
+								rowsSize={65}
+								rowsCount={100}
+								>
+							</VTable>
 						</Route>
 					</Switch>
 				</div>
