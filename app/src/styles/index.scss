@@ -26,20 +26,24 @@ table.scroll-table {
 }
 
 table.scroll-table tbody tr td div {
-  height: 30;
+  height: auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+table.scroll-table tbody tr td {
+  padding: 0px;
+  vertical-align: middle;
+}
+
 table.scroll-table tbody::-webkit-scrollbar,
 table.scroll-table tbody::-webkit-scrollbar-thumb {
-  min-height: 10px;
+  min-height: 12px;
   color: rgba(0, 0, 0, 0.3);
-  width: 26px;
-  border-radius: 13px;
+  width: 7px;
+  border-radius: 10px;
   background-clip: padding-box;
-  border: 10px solid transparent;
 }
 
 table.scroll-table tbody::-webkit-scrollbar-thumb {
@@ -47,12 +51,13 @@ table.scroll-table tbody::-webkit-scrollbar-thumb {
 }
 
 @media (max-width: 1000px) {
-  table.scroll-table tbody::-webkit-scrollbar {
-    display: none;
-  }
-
   table.scroll-table thead {
     width: 100%;
+  }
+
+  table.scroll-table tbody::-webkit-scrollbar,
+  table.scroll-table tbody::-webkit-scrollbar-thumb {
+    width: 0px;
   }
 }
 

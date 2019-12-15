@@ -1,25 +1,29 @@
-import React from 'react';
-import usePostsState from "../../services/posts.service"
+import React, { useEffect, useState, useContext } from 'react';
+import { usePostsState, usePosts } from '../../services/posts.service';
+import { PostsContext } from '../../contexts/posts';
 
 /**
  * vRow is use as default row component in a vTableBody 
  * 
- * @param {int} elementIndex the index of the element to refer to
- * @param {Array} rowIndexes the row indexes to show in the row
- * @param {Object} style
+ * @param elementIndex the index of the element to refer to
+ * @param rowIndexes   the row indexes to show in the row
+ * @param style        the style object
+ * 
+ * @returns The JSX element of the row
  */
 
-const VRow = ({ rowIndex, style, rowIndexes }) => {
-    const postsState = usePostsState()
-
-    var rowContent = postsState.posts[rowIndex]
+const VRow = ({ rowIndex, rowIndexes, rowSize, style }) => {
+    const { postsState } = usePostsState()
 
     return (
-        <tr key={rowIndex} style={{ position: 'absolute', top: style.top }}>
+        <tr key={rowIndex} style={style}>
             {
-                rowIndexes.map((tabIndex) => {
-                    return <td><div style={{ height: 30 }}> {rowContent[tabIndex]}</div></td>
-                })
+                (postsState.posts[rowIndex] != null) ?
+                    rowIndexes.map((tabIndex) => {
+                        return <td style={{ height: rowSize }}><div> {postsState.posts[rowIndex][tabIndex]}</div></td>
+                    })
+                    :
+                    <div></div>
             }
         </tr>
     )

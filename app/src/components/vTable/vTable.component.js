@@ -1,45 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import VTableBody from './vTableBody.component';
-import VRow from './vRow.component';
 
 /**
  * vTable scrollable and high performance table  
  *  
- * To each row  of the table is passed an index of the element to represent,
+ * To each row of the table is passed an index of the element to represent,
  * a style object for the visualization and the data indexes to display
  *  
- * @param  header      an array of head indexes
- * @param  bodyHeight  the height of the scrollable table body
- * @param  rowsSize    the row size in pixels
- * @param  rowsCount   the number of rows
- * @param  rowComponent the raw component
- * @param  indexes     the indexes of data to display
+ * @param  {string[]}        header        an array of head indexes
+ * @param  {number | string} bodyHeight    the height of the scrollable table body
+ * @param  {Component}       rowComponent  the row component
+ * @param  {number}          rowsSize      the row size in pixels
+ * @param  {number}          rowsCount     the number of rows
+ * @param  {string[]}        indexes       the indexes of data to display
  * 
  * @returns the vTable react Component 
  */
+const VTable = ({ tableStructure,tableSeachCallback, bodyHeight, rowComponent, rowsSize, rowsCount }) => {
+    var rowIndexes = []
 
-const VTable = ({ header, bodyHeight, rowsSize, rowsCount, rowComponent, rowIndexes }) => {
+    tableStructure.map(tableEntry => rowIndexes.push(tableEntry.dataIndex))
+
     return (
-        <table className={"table table-hover scroll-table"}>
-            <thead>
-                <tr>
-                    {
-                        header.map((head) => {
-                            return <td>{head}</td>
-                        })
-                    }
-                </tr>
-            </thead>
-            <VTableBody
-                style={{ height: bodyHeight }}
+        <div className={'mt-4'}>
+            
+            <div class="active-cyan-4 mb-4">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" onChange={tableSeachCallback}/>
+            </div>
 
-                rowsCount={rowsCount}
-                rowsSize={rowsSize}
+            <table className={"table table-hover scroll-table"}>
+                <thead>
+                    <tr>
+                        {
+                            tableStructure.map(tableEntry => {
+                                return <td onClick={tableEntry.onClick} tableIndex={tableEntry.dataIndex}>{tableEntry.columnName}</td>
+                            })
+                        }
+                    </tr>
+                </thead>
 
-                rowComponent={(rowComponent) ? rowComponent : VRow}
-                rowIndexes={rowIndexes}
-            />
-        </table>
+                <VTableBody
+                    rowsCount={rowsCount}
+                    rowsSize={rowsSize}
+                    rowComponent={rowComponent}
+                    rowIndexes={rowIndexes}
+
+                    style={{ height: bodyHeight }}
+                />
+            </table>
+        </div>
     )
 }
 

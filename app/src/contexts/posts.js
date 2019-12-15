@@ -1,4 +1,5 @@
 import React, { useReducer } from "react"
+import { usePosts } from "../services/posts.service";
 
 export const postsInitialState = { loading: false, error: {}, posts: [], users: [] };
 
@@ -16,6 +17,9 @@ export const FETCH_POSTS_USERS_ERROR = "FETCH_POSTS_USERS_ERROR"
 
 // REDUCER
 export const postsReducer = (state, action) => {
+
+
+    console.log("reducer called")
     switch (action.type) {
         case FETCH_POSTS:
             return { ...state, loading: true };
@@ -35,6 +39,8 @@ export const postsReducer = (state, action) => {
 
 export const PostsProvider = ({ children }) => {
     const [postsState, dispatch] = useReducer(postsReducer, postsInitialState);
+
+    usePosts({postsState,dispatch});
 
     return (
         <PostsContext.Provider value={{ postsState, dispatch }}>
