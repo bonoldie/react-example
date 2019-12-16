@@ -17,6 +17,14 @@ const VTableBody = ({ rowsCount, rowsSize, rowComponent = VRow, rowIndexes, styl
     const [_currentRowIndex, setCurrentRowIndex] = useState(0)
     const [_displayedRows, setDisplayedRows] = useState([])
 
+    // Each time there is a search or a refresh...
+    useEffect(() => {
+        document.getElementById('scrollable-table-body').scrollTo(1,0)
+        return () => {
+            
+        };
+    }, [rowsCount])
+
     // Populate the rows array with the row component
     _.times(rowsCount,
         _rowIndex =>
