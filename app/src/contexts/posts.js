@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"
 import { usePosts } from "../services/posts.service";
 
-export const postsInitialState = { loading: false, error: {}, posts: [], users: [] };
+export const postsInitialState = { loading: false, error: {}, posts: [], users: [],tabularPosts:[] };
 
 // CONTEXT
 export const PostsContext = React.createContext(postsInitialState);
@@ -15,11 +15,11 @@ export const FETCH_POSTS_USERS = "FETCH_POSTS_USERS"
 export const FETCH_POSTS_USERS_SUCCESS = "FETCH_POSTS_USERS_SUCCESS"
 export const FETCH_POSTS_USERS_ERROR = "FETCH_POSTS_USERS_ERROR"
 
+export const INIT_TABULAR_POSTS = "INIT_TABULAR_POSTS"
+export const UPDATE_TABULAR_POSTS = "UPDATE_TABULAR_POSTS"
+
 // REDUCER
 export const postsReducer = (state, action) => {
-
-
-    console.log("reducer called")
     switch (action.type) {
         case FETCH_POSTS:
             return { ...state, loading: true };
@@ -28,12 +28,21 @@ export const postsReducer = (state, action) => {
         case FETCH_POSTS_ERROR:
             return { ...state, loading: false, error: action.payload };
 
-        case FETCH_POSTS_USERS:
+      case FETCH_POSTS_USERS:
             return { ...state, loading: true };
-        case FETCH_POSTS_USERS_SUCCESS:
+      case FETCH_POSTS_USERS_SUCCESS:
             return { ...state, loading: false, users: action.payload };
-        case FETCH_POSTS_USERS_ERROR:
+      case FETCH_POSTS_USERS_ERROR:
             return { ...state, loading: false, error: action.payload };
+
+      case INIT_TABULAR_POSTS:
+        return { ...state, tabularPosts: state.posts };
+        break;
+      case UPDATE_TABULAR_POSTS:
+        return { ...state, tabularPosts: action.payload };
+        break;
+      default:
+        return({...state})
     }
 }
 
